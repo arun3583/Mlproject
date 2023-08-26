@@ -29,13 +29,13 @@ class DataTranformation:
             num_pipeline=Pipeline(
                 steps=[
                     ('imputer',SimpleImputer(strategy='median')),
-                    ('scaler',StandardScaler(with_mean=False))
+                    ('scaler',StandardScaler())
                 ]
             )
             cat_pipeline=Pipeline(
                 steps=[
                     ('imputer',SimpleImputer(strategy="most_frequent")),
-                    ('one_hot_encoder',OneHotEncoder()),
+                    ('one_hot_encoder', OneHotEncoder(handle_unknown='ignore')),  # Handle new categories
                     ('scaler',StandardScaler(with_mean=False))
                 ]
             )
